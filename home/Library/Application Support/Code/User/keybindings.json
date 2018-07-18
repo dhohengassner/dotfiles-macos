@@ -1,0 +1,19 @@
+// Place your key bindings in this file to overwrite the defaults
+[
+    {
+        "key": "alt+cmd+p",
+        "command": "editor.action.format"
+    },
+    {
+        "key": "alt+cmd+[IntlBackslash]",
+        "command": "workbench.files.action.showActiveFileInExplorer"
+    },
+    {
+        "key": "cmd+[IntlBackslash]",
+        "command": "workbench.action.splitEditor"
+    },
+    {
+        "key": "ctrl+shift+alt+cmd+7",
+        "command": "-workbench.action.splitEditor"
+    }
+]
