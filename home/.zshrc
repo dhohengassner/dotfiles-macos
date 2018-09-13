@@ -4,6 +4,9 @@
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/dh/.oh-my-zsh
 
+# set code as editor
+export EDITOR=code
+
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
@@ -29,9 +32,9 @@ plugins=(
 	aws
 	bundler
 	docker
-	gem
+	helm
+	kubectl
 	osx
-	rake
 	rbenv
 	ruby
 	tmux
@@ -73,15 +76,25 @@ fi
 
 # vault integration
 export PATH=$PATH:/Applications
-export VAULT_CACERT=/Users/dh/vault.bethel.jw.org.pem
 
 # K8s variables
 export KUBECONFIG=~/.kube/dh-test
+
+# ruby
+eval "$(rbenv init -)"
+export RBENV_ROOT="$HOME/.rbenv"
 
 # python
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
+
+# GO
+export GOPATH=/Users/dh/go
+export PATH="$PATH:$HOME/go/bin"
+
+# Groovy
+export GROOVY_HOME=/usr/local/opt/groovy/libexec
 
 if command -v pyenv 1>/dev/null 2>&1; then
 	eval "$(pyenv init -)"
@@ -93,6 +106,9 @@ pyenv activate python3env
 # completion
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /Applications/vault vault
+
+# direnv
+eval "$(direnv hook zsh)"
 
 # execute all .zsh files in HOME directory - some custom functions
 for ZFILE in $HOME/.zsh/*; do
