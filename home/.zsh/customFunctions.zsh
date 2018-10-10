@@ -98,7 +98,7 @@ alias kv='kitchen verify'
 alias dlv='delivery local verify'
 
 # Docker aliases
-alias db='docker build'
+alias db='docker build .'
 alias dcr='docker create'
 alias ds='docker start'
 alias drm='docker rm'
@@ -112,6 +112,11 @@ alias dpsa='docker ps -a'
 
 alias dip!='docker image prune -a'
 alias dsp!='docker system prune -a'
+
+alias dcup='docker-compose up'
+alias dcupd='docker-compose up -d'
+alias dcstop='docker-compose stop'
+alias dcdown='docker-compose down'
 
 # config aliases
 alias zshconfig="vim ~/.zshrc"

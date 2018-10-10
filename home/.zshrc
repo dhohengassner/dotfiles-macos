@@ -41,6 +41,9 @@ plugins=(
 	vagrant
 )
 
+# alias tips
+source ~/.oh-my-zsh/plugins/alias-tips/alias-tips.plugin.zsh
+
 # homeshick integration
 source "$HOME/.homesick/repos/homeshick/homeshick.sh"
 fpath=($HOME/.homesick/repos/homeshick/completions $fpath)

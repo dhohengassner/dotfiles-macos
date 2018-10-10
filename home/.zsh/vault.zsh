@@ -20,7 +20,9 @@ function vt() {
 			export VAULT_ADDR=$(echo $3 | jq -r '.vault.address')
 			export AWS_REGION=$(echo $3 | jq -r '.aws.region')
 			export AWS_DEFAULT_REGION=$(echo $3 | jq -r '.aws.region')
+			unset VAULT_TOKEN
 			vault login -method=ldap username="$2"
+			export VAULT_TOKEN=`cat ~/.vault-token`
 		else
 			printf "You must have jq installed to use this script.\n"
 			$?=1
@@ -28,11 +30,8 @@ function vt() {
 
 		if [ $?==0 ]; then
 			data=$(vault read -format=json "$1")
-			AWS_ACCESS_KEY_ID=$(echo $data | jq -r '.data.access_key')
-
-			AWS_SECRET_ACCESS_KEY=$(echo $data | jq -r '.data.secret_key')
-
-			export AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY
+			export AWS_ACCESS_KEY_ID=$(echo $data | jq -r '.data.access_key')
+			export AWS_SECRET_ACCESS_KEY=$(echo $data | jq -r '.data.secret_key')
 		fi
 	}
 
