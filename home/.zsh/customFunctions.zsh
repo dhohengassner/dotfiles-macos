@@ -53,7 +53,7 @@ sdocker() {
 }
 
 edocker() {
-	eval "$(docker-machine env default)"
+	eval "$(docker-machine env dh-docker-toolbox)"
 }
 
 pyvirtenvvup() {
@@ -104,6 +104,11 @@ alias ds='docker start'
 alias drm='docker rm'
 alias drmf='docker rm -f'
 alias drmi='docker rmi'
+alias dei='docker exec -it'
+
+alias drm!='docker rm -f $(docker ps -a -q)'
+alias dk!='docker kill $(docker ps -a -q)'
+alias drmi!='docker rmi $(docker images -q)'
 
 alias di='docker images'
 alias dia='docker images -a'
@@ -117,6 +122,7 @@ alias dcup='docker-compose up'
 alias dcupd='docker-compose up -d'
 alias dcstop='docker-compose stop'
 alias dcdown='docker-compose down'
+alias dckill='docker-compose kill'
 
 # config aliases
 alias zshconfig="vim ~/.zshrc"
