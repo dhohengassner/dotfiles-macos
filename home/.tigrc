@@ -1,0 +1,3 @@
+# bindings
+bind generic 9 !@sh -c "git rev-parse --short %(commit) | pbcopy"
+

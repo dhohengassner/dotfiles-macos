@@ -106,6 +106,9 @@ alias drmf='docker rm -f'
 alias drmi='docker rmi'
 alias dei='docker exec -it'
 
+dbash() { docker exec -it $(docker ps -aqf "name=$1") /bin/bash; }
+dsh() { docker exec -it $(docker ps -aqf "name=$1") /bin/sh; }
+
 alias drm!='docker rm -f $(docker ps -a -q)'
 alias dk!='docker kill $(docker ps -a -q)'
 alias drmi!='docker rmi $(docker images -q)'
