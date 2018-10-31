@@ -29,9 +29,6 @@ alias drmf='docker rm -f'
 alias drmi='docker rmi'
 alias dei='docker exec -it'
 
-dbash() { docker exec -it $(docker ps -aqf "name=$1") /bin/bash; }
-dsh() { docker exec -it $(docker ps -aqf "name=$1") /bin/sh; }
-
 alias drm!='docker rm -f $(docker ps -a -q)'
 alias dk!='docker kill $(docker ps -a -q)'
 alias drmi!='docker rmi $(docker images -q)'
@@ -49,6 +46,14 @@ alias dcupd='docker-compose up -d'
 alias dcstop='docker-compose stop'
 alias dcdown='docker-compose down'
 alias dckill='docker-compose kill'
+
+# terraform
+
+alias tf='terraform'
+alias tfi='terraform init'
+alias tfp='terraform plan'
+alias tfa='terraform apply'
+alias tfa!='terraform apply -auto-approve'
 
 # config aliases
 alias zshconfig="vim ~/.zshrc"

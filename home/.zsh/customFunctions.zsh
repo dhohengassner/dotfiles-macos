@@ -18,6 +18,10 @@ devssh() {
 	ssh vagrant@192.168.100.22
 }
 
+dbash() { docker exec -it $(docker ps -aqf "name=$1") /bin/bash; }
+
+dsh() { docker exec -it $(docker ps -aqf "name=$1") /bin/sh; }
+
 devvssh() {
 	export VAGRANT_CWD='/Users/dh/src/dev-env'
 	vagrant ssh
