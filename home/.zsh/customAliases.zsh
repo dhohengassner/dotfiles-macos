@@ -2,12 +2,16 @@
 
 # tmux aliases
 alias t='tmux'
-alias tn='tmux new -s myname'
+alias tn='tmux new -s'
 alias ta='tmux attach'
 alias tan='tmux a -t'
 alias tls='tmux ls'
 alias tksn='tmux kill-session -t'
 alias tk!='tmux kill-server'
+
+# go aliases
+alias gor='go run'
+alias gob='go build'
 
 # own kitchen aliases
 alias kc='kitchen converge'
@@ -24,6 +28,7 @@ alias dlv='delivery local verify'
 alias db='docker build .'
 alias dcr='docker create'
 alias ds='docker start'
+alias dk='docker kill'
 alias drm='docker rm'
 alias drmf='docker rm -f'
 alias drmi='docker rmi'
@@ -46,6 +51,8 @@ alias dcupd='docker-compose up -d'
 alias dcstop='docker-compose stop'
 alias dcdown='docker-compose down'
 alias dckill='docker-compose kill'
+
+alias dlogecr='eval $(aws ecr get-login --no-include-email)'
 
 # terraform
 

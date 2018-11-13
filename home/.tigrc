@@ -1,3 +1,3 @@
 # bindings
 bind generic 9 !@sh -c "git rev-parse --short %(commit) | pbcopy"
-
+bind generic 8 !@sh -c "git rev-list --format=%B --max-count=1 %(commit) | pbcopy"
