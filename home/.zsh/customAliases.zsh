@@ -74,3 +74,6 @@ alias cohmyzsh="code ~/.oh-my-zsh"
 alias cdhgitconfig="code ~/.zsh/git.zsh"
 alias cdhcustom="code ~/.zsh/customFunctions.zsh"
 alias cdhvault="code ~/.zsh/vault.zsh"
+
+# ssh into docker toolbox vm
+alias dtssh="ssh -i ~/.docker/machine/machines/dh-docker-toolbox/id_rsa -p 49573 docker@localhost"

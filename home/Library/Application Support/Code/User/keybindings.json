@@ -15,5 +15,17 @@
     {
         "key": "ctrl+shift+alt+cmd+7",
         "command": "-workbench.action.splitEditor"
+    },
+    {
+        "key": "alt+cmd+[Backslash]",
+        "command": "git.revertSelectedRanges"
+    },
+    {
+        "key": "alt+cmd+[Quote]",
+        "command": "git.stageSelectedRanges"
+    },
+    {
+        "key": "alt+cmd+[BracketLeft]",
+        "command": "git.unstageSelectedRanges"
     }
 ]
