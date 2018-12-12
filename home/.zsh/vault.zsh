@@ -56,3 +56,6 @@ function vt() {
 	done
 
 }
+
+# alias for own user
+alias vtm='vt dhohengassner2'

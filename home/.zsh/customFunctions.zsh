@@ -78,7 +78,19 @@ lab2access() {
 	export AWS_REGION=$(echo $bethel_values | jq -r '.aws.region')
 	export AWS_DEFAULT_REGION=$(echo $bethel_values | jq -r '.aws.region')
 
-	json=$(aws sts assume-role --role-arn $(echo $bethel_values | jq -r '.aws.role') --role-session-name "dhlab2access" --profile 'samllab2')
+	json=$(aws sts assume-role --role-arn $(echo $bethel_values | jq -r '.aws.accounts.lab2.role') --role-session-name "dhlab2access" --profile 'saml2aws')
+	export AWS_ACCESS_KEY_ID=$(echo $json | jq .Credentials.AccessKeyId --raw-output)
+	export AWS_SECRET_ACCESS_KEY=$(echo $json | jq .Credentials.SecretAccessKey --raw-output)
+	export AWS_SESSION_TOKEN=$(echo $json | jq .Credentials.SessionToken --raw-output)
+}
+
+hyperloopaccess() {
+	saml2aws login
+
+	export AWS_REGION=$(echo $bethel_values | jq -r '.aws.region')
+	export AWS_DEFAULT_REGION=$(echo $bethel_values | jq -r '.aws.region')
+
+	json=$(aws sts assume-role --role-arn $(echo $bethel_values | jq -r '.aws.accounts.hyperloop.role') --role-session-name "dhhyperloopaccess" --profile 'saml2aws')
 	export AWS_ACCESS_KEY_ID=$(echo $json | jq .Credentials.AccessKeyId --raw-output)
 	export AWS_SECRET_ACCESS_KEY=$(echo $json | jq .Credentials.SecretAccessKey --raw-output)
 	export AWS_SESSION_TOKEN=$(echo $json | jq .Credentials.SessionToken --raw-output)
