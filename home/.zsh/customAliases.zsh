@@ -55,12 +55,16 @@ alias dckill='docker-compose kill'
 alias dlogecr='eval $(aws ecr get-login --no-include-email)'
 
 # terraform
-
 alias tf='terraform'
 alias tfi='terraform init'
 alias tfp='terraform plan'
 alias tfa='terraform apply'
 alias tfa!='terraform apply -auto-approve'
+
+# ssh-agent
+alias ssha='ssh-add'
+alias sshl='ssh-add -l'
+alias sshd='ssh-add -D'
 
 # config aliases
 alias zshconfig="vim ~/.zshrc"
