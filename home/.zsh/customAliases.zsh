@@ -80,4 +80,8 @@ alias cdhcustom="code ~/.zsh/customFunctions.zsh"
 alias cdhvault="code ~/.zsh/vault.zsh"
 
 # ssh into docker toolbox vm
-alias dtssh="ssh -i ~/.docker/machine/machines/dh-docker-toolbox/id_rsa -p 49573 docker@localhost"
+alias dtssh='docker-machine ssh dh-docker-toolbox'
+#alias dtssh="ssh -i ~/.docker/machine/machines/dh-docker-toolbox/id_rsa -p 49775 docker@localhost"
+
+# some other stuff
+alias re='/bin/zsh --login'
