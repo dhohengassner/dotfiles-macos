@@ -1,7 +1,7 @@
 #! /usr/local/bin/zsh
 
 # tmux aliases
-alias t='tmux'
+alias t='tmux attach || tmux new -s main'
 alias tn='tmux new -s'
 alias ta='tmux attach'
 alias tan='tmux a -t'
