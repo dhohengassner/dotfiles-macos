@@ -39,6 +39,8 @@ plugins=(
 	ruby
 	tmux
 	vagrant
+	# git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+	zsh-autosuggestions
 )
 
 # alias tips
@@ -64,6 +66,9 @@ export SSH_KEY_PATH="~/.ssh/rsa_id"
 
 # chef integration
 export PATH="/opt/chefdk/embedded/bin:$PATH"
+
+# gitlab token for scripting and querying appsgit
+export GITLAB_TOKEN="$(echo $(<~/dh_values.json) | jq -r '.gitlab.scriptToken')"
 
 # eval "$(chef shell-init zsh)" - old method creates chef shell every time
 
