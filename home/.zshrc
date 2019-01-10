@@ -98,8 +98,14 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 
 # GO
+### test with multiple GOPATHs
+# export GOPATH=/Users/dh/go:/Users/dh/src/gopath
+# export GOROOT=/usr/local/opt/go/libexec
+# export PATH="$PATH:$GOPATH/bin"
+# export PATH="$PATH:$GOROOT/bin"
+
 export GOPATH=/Users/dh/go
-export PATH="$PATH:$HOME/go/bin"
+export PATH="$PATH:$GOPATH/bin"
 
 # Groovy
 export GROOVY_HOME=/usr/local/opt/groovy/libexec
