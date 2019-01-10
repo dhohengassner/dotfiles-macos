@@ -47,7 +47,7 @@ if [ $VM_EXISTS_CODE -eq 1 ]; then
   if [ "${NO_PROXY}" ]; then
     PROXY_ENV="$PROXY_ENV --engine-env NO_PROXY=$NO_PROXY"
   fi
-  "${DOCKER_MACHINE}" create -d virtualbox $PROXY_ENV --virtualbox-memory 10240 --virtualbox-cpu-count "8" --virtualbox-disk-size 204800 "${VM}"
+  "${DOCKER_MACHINE}" create -d virtualbox $PROXY_ENV --virtualbox-memory 10240 --virtualbox-cpu-count "2" --virtualbox-disk-size 204800 "${VM}"
 fi
 
 VM_STATUS="$( set +e ; ${DOCKER_MACHINE} status ${VM} )"
