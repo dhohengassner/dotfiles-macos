@@ -72,6 +72,17 @@ h() {
 	history
 }
 
+ggc() {
+	if [ $# -eq 1 ]; then
+		ggpath=$1
+		currGoPrj=$(echo ${ggpath#*@} | sed 's/.\{4\}$//' | tr : /)
+		GIT_TERMINAL_PROMPT=1 go get -d -v -t $currGoPrj
+		cd "$GOPATH/src/$currGoPrj"
+	else
+		echo "odd parameter - parameter count (should be 1): $#"
+	fi
+}
+
 lab2access() {
 	saml2aws login
 

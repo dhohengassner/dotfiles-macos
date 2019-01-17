@@ -12,6 +12,12 @@ alias tk!='tmux kill-server'
 # go aliases
 alias gor='go run'
 alias gob='go build'
+alias gog='GIT_TERMINAL_PROMPT=1 go get'
+alias goga='GIT_TERMINAL_PROMPT=1 go get -d -t .'
+alias gogr='GIT_TERMINAL_PROMPT=1 go get -d -v -t ./...'
+alias cdg="cd $GOPATH/src"
+alias gt='go test'
+alias gtr='go test -v ./...'
 
 # own kitchen aliases
 alias kc='kitchen converge'
