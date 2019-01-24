@@ -128,3 +128,6 @@ eval "$(direnv hook zsh)"
 for ZFILE in $HOME/.zsh/*; do
 	source $ZFILE
 done
+
+# enable docker
+edocker || sdocker
