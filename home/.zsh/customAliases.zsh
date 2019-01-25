@@ -91,3 +91,6 @@ alias dtssh='docker-machine ssh dh-docker-toolbox'
 
 # some other stuff
 alias re='/bin/zsh --login'
+
+# k8s
+alias kcdt="kubectl -n kube-system describe secret kubernetes-dashboard-token | awk '$1==\"token:\"{print $2}' | pbcopy"
