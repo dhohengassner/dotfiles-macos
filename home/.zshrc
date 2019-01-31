@@ -115,7 +115,7 @@ if command -v pyenv 1>/dev/null 2>&1; then
 	eval "$(pyenv virtualenv-init -)"
 fi
 
-pyenv activate python3env
+pyenv activate python3env 1>/dev/null 2>&1
 
 # completion
 autoload -U +X bashcompinit && bashcompinit
@@ -130,4 +130,5 @@ for ZFILE in $HOME/.zsh/*; do
 done
 
 # enable docker
-edocker || sdocker
+docker-machine status dh-docker-toolbox > /dev/null || sdocker
+edocker
