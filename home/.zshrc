@@ -130,5 +130,5 @@ for ZFILE in $HOME/.zsh/*; do
 done
 
 # enable docker
-docker-machine status dh-docker-toolbox > /dev/null || sdocker
-edocker
+dmstatus=$(docker-machine status dh-docker-toolbox)
+if [ "$dmstatus" != "Running" ]; then sdocker; else edocker; fi
