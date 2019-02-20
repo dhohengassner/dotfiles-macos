@@ -93,9 +93,9 @@ eval "$(rbenv init -)"
 export RBENV_ROOT="$HOME/.rbenv"
 
 # python
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-export PYENV_VIRTUALENV_DISABLE_PROMPT=1
+# export PYENV_ROOT="$HOME/.pyenv"
+# export PATH="$PYENV_ROOT/bin:$PATH"
+# export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 
 # GO
 ### test with multiple GOPATHs
@@ -115,7 +115,7 @@ if command -v pyenv 1>/dev/null 2>&1; then
 	eval "$(pyenv virtualenv-init -)"
 fi
 
-pyenv activate python3env 1>/dev/null 2>&1
+# pyenv activate python3env 1>/dev/null 2>&1
 
 # completion
 autoload -U +X bashcompinit && bashcompinit
