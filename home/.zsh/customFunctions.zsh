@@ -1,6 +1,7 @@
 #! /usr/local/bin/zsh
 
 bethel_values=$(<~/bethel_values.json)
+dh_values=$(<~/dh_values.json)
 
 c() {
 	if [ $# -eq 0 ]; then
@@ -105,6 +106,18 @@ hyperloopaccess() {
 	export AWS_ACCESS_KEY_ID=$(echo $json | jq .Credentials.AccessKeyId --raw-output)
 	export AWS_SECRET_ACCESS_KEY=$(echo $json | jq .Credentials.SecretAccessKey --raw-output)
 	export AWS_SESSION_TOKEN=$(echo $json | jq .Credentials.SessionToken --raw-output)
+}
+
+setoidcenv() {
+	vault token lookup >/dev/null 2>&1
+	if [ $? -eq 0 ]; then
+		export OIDC_DISCOVERY_URL=$(vault read -field=$(echo $bethel_values | jq -r '.vault.position.oidc_qa.url') $(echo $bethel_values | jq -r '.vault.position.oidc_qa.path'))
+		export OIDC_CLIENT_ID=$(vault read -field=$(echo $bethel_values | jq -r '.vault.position.oidc_qa.client_id') $(echo $bethel_values | jq -r '.vault.position.oidc_qa.path'))
+		export OIDC_CLIENT_SECRET=$(vault read -field=$(echo $bethel_values | jq -r '.vault.position.oidc_qa.client_secret') $(echo $bethel_values | jq -r '.vault.position.oidc_qa.path'))
+		echo "oidc values exported successful"
+	else
+		echo "vault access not working..."
+	fi
 }
 
 install_bethel_certs() {
