@@ -125,3 +125,70 @@ install_bethel_certs() {
 	chmod +x ~/install_certs.sh
 	~/install_certs.sh
 }
+
+kemk () {
+	export KOPS_STATE_STORE=$(echo $bethel_values | jq -r '.kubernetes.kops.testcluster.default_state_store')
+	kops export kubecfg $(echo $bethel_values | jq -r '.kubernetes.kops.testcluster.cluster_name')
+}
+
+kadt() {
+	clusters=(cdh-union cdh-deliver)
+	roles=(master deployer developer)
+
+	PS3='Select a cluster you wanna connect to: '
+	select cluster in "${clusters[@]}"; do
+		case "$cluster" in
+		cdh-union)
+			echo "you have choosen union"
+			PS3='Select a role you wanna use: '
+				select role in "${roles[@]}"; do
+					case "$role" in
+					master)
+						echo "master role selected"
+						break
+						;;
+					deployer)
+						echo "deployer role selected"
+						break
+						;;
+					developer)
+						echo "developer role selected"
+						break
+						;;
+					*)
+						printf "Invalid selection. Please try again.\n"
+						;;
+					esac
+				done
+			break
+			;;
+		cdh-deliver)
+			echo "you have choosen deliver"
+			PS3='Select a role you wanna use: '
+			select role in "${roles[@]}"; do
+					case "$role" in
+					master)
+						echo "master role selected"
+						break
+						;;
+					deployer)
+						echo "deployer role selected"
+						break
+						;;
+					developer)
+						echo "developer role selected"
+						break
+						;;
+					*)
+						printf "Invalid selection. Please try again.\n"
+						;;
+					esac
+				done
+			break
+			;;
+		*)
+			printf "Invalid selection. Please try again.\n"
+			;;
+		esac
+	done
+}
