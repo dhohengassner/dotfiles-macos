@@ -31,6 +31,8 @@ plugins=(
 	autojump
 	aws
 	bundler
+	# https://github.com/popstas/zsh-command-time
+	command-time
 	docker
 	helm
 	kubectl
@@ -38,13 +40,16 @@ plugins=(
 	rbenv
 	ruby
 	tmux
-	vagrant
 	# git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 	zsh-autosuggestions
 )
 
 # alias tips
 source ~/.oh-my-zsh/plugins/alias-tips/alias-tips.plugin.zsh
+
+# command-time
+export ZSH_COMMAND_TIME_MIN_SECONDS=1
+export ZSH_COMMAND_TIME_COLOR="yellow"
 
 # homeshick integration
 source "$HOME/.homesick/repos/homeshick/homeshick.sh"
