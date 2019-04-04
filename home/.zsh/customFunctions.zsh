@@ -108,6 +108,18 @@ hyperloopaccess() {
 	export AWS_SESSION_TOKEN=$(echo $json | jq .Credentials.SessionToken --raw-output)
 }
 
+prdaccess() {
+	saml2aws login
+
+	export AWS_REGION=$(echo $bethel_values | jq -r '.aws.region')
+	export AWS_DEFAULT_REGION=$(echo $bethel_values | jq -r '.aws.region')
+
+	json=$(aws sts assume-role --role-arn $(echo $bethel_values | jq -r '.aws.accounts.prd.role') --role-session-name "dhprdaccess" --profile 'saml2aws')
+	export AWS_ACCESS_KEY_ID=$(echo $json | jq .Credentials.AccessKeyId --raw-output)
+	export AWS_SECRET_ACCESS_KEY=$(echo $json | jq .Credentials.SecretAccessKey --raw-output)
+	export AWS_SESSION_TOKEN=$(echo $json | jq .Credentials.SessionToken --raw-output)
+}
+
 setoidcenv() {
 	vault token lookup >/dev/null 2>&1
 	if [ $? -eq 0 ]; then
