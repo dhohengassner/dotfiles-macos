@@ -1,7 +1,11 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
+# debug startup time
+# zmodload zsh/zprof
+
 # Path to your oh-my-zsh installation.
+
 export ZSH=/Users/dh/.oh-my-zsh
 
 # set code as editor
@@ -23,29 +27,29 @@ COMPLETION_WAITING_DOTS="true"
 
 # install plugins
 # https://github.com/getantibody/antibody
-# source <(antibody init)
-# antibody bundle < ~/.zsh_plugins.txt
+source <(antibody init)
+antibody bundle < ~/.zsh_plugins.txt
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(
-	autojump
-	aws
-	bundler
-	# https://github.com/popstas/zsh-command-time
-	command-time
-	docker
-	helm
-	kubectl
-	osx
-	rbenv
-	ruby
-	tmux
-	# git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-	zsh-autosuggestions
-)
+# plugins=(
+# 	autojump
+# 	aws
+# 	bundler
+# 	# https://github.com/popstas/zsh-command-time
+# 	command-time
+# 	docker
+# 	helm
+# 	kubectl
+# 	osx
+# 	rbenv
+# 	ruby
+# 	tmux
+# 	# git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+# 	zsh-autosuggestions
+# )
 
 # alias tips
 source ~/.oh-my-zsh/plugins/alias-tips/alias-tips.plugin.zsh
@@ -128,3 +132,6 @@ done
 # enable docker
 dmstatus=$(docker-machine status dh-docker-toolbox)
 if [ "$dmstatus" != "Running" ]; then sdocker; else edocker; fi
+
+# show startup time
+# zprof
