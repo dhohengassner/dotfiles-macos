@@ -61,6 +61,20 @@ edocker() {
 	eval "$(docker-machine env dh-docker-toolbox)"
 }
 
+schef() {
+	# eval "$(chef shell-init zsh)" - old method creates chef shell every time
+
+	# should be faster
+	if test -e "${HOME}/.chefshellinit" && source "${HOME}/.chefshellinit"; then
+		echo 'init chef shell'
+	else
+		echo 'recreating chef shell'
+		chef shell-init zsh >"${HOME}/.chefshellinit"
+		chmod +x "${HOME}/.chefshellinit"
+		source "${HOME}/.chefshellinit"
+	fi
+}
+
 pyvirtenvvup() {
 	. ~/src/pythonworkspace/bin/activate
 }

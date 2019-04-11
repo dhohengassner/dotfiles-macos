@@ -7,6 +7,9 @@ export ZSH=/Users/dh/.oh-my-zsh
 # set code as editor
 export EDITOR=code
 
+# avoid german outputs :)
+export LANG="en_US.UTF-8"
+
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
@@ -18,10 +21,10 @@ ENABLE_CORRECTION="true"
 # Uncomment the following line to display red dots whilst waiting for completion.
 COMPLETION_WAITING_DOTS="true"
 
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# HIST_STAMPS="mm/dd/yyyy"
+# install plugins
+# https://github.com/getantibody/antibody
+# source <(antibody init)
+# antibody bundle < ~/.zsh_plugins.txt
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
@@ -74,18 +77,6 @@ export PATH="/opt/chefdk/embedded/bin:$PATH"
 
 # gitlab token for scripting and querying appsgit
 export GITLAB_TOKEN="$(echo $(<~/dh_values.json) | jq -r '.gitlab.scriptToken')"
-
-# eval "$(chef shell-init zsh)" - old method creates chef shell every time
-
-# should be faster
-if test -e "${HOME}/.chefshellinit" && source "${HOME}/.chefshellinit"; then
-	echo 'init chef shell'
-else
-	echo 'recreating chef shell'
-	chef shell-init zsh >"${HOME}/.chefshellinit"
-	chmod +x "${HOME}/.chefshellinit"
-	source "${HOME}/.chefshellinit"
-fi
 
 # vault integration
 export PATH=$PATH:/Applications
