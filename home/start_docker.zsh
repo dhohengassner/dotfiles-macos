@@ -31,6 +31,8 @@ if [ ! -f "${VBOXMANAGE}" ]; then
   exit 1
 fi
 
+"${VBOXMANAGE}" unregistervm --delete "${VM}" || true &> /dev/null
+
 "${VBOXMANAGE}" list vms | grep \""${VM}"\" &> /dev/null
 VM_EXISTS_CODE=$?
 
