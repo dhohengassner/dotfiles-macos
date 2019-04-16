@@ -104,10 +104,10 @@ alias kpfm='kubectl port-forward $(kubectl get pods -n ingress-nginx -o name -l 
 # exa
 # http://zsh.sourceforge.net/Doc/Release/Expansion.html#Parameter-Expansion
 (( $+commands[exa] )) && {
-    alias l='exa'
-    alias la='exa -la'
-    alias ll='exa -lag'
-    alias lg='exa -bghHliS --git'
+    alias el='exa'
+    alias ela='exa -la'
+    alias ell='exa -lag'
+    alias elg='exa -bghHliS --git'
 }
 
 # Homebrew
