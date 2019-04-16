@@ -17,4 +17,4 @@ export LESSCHARSET=utf-8
 
 # set important paths
 export GOPATH=$HOME/go
-export PATH="$GOPATH/bin:/Applications:$PATH:/opt/chefdk/embedded/bin"
+export PATH="$GOPATH/bin:/usr/local/bin:/usr/bin:/usr/sbin:/bin:/sbin:/opt/chefdk/embedded/bin:/Applications"
