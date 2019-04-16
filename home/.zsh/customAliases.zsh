@@ -1,5 +1,9 @@
 #! /usr/local/bin/zsh
 
+# important startup
+alias sdocker='source ~/start_docker.zsh'
+alias edocker='eval "$(docker-machine env dh-docker-toolbox)"'
+
 # tmux aliases
 alias t='tmux attach || tmux new -s main'
 alias tn='tmux new -s'
@@ -91,7 +95,26 @@ alias dtssh='docker-machine ssh dh-docker-toolbox'
 
 # some other stuff
 alias re='/bin/zsh --login'
+alias h='history'
 
 # k8s
 alias kcdt='kubectl -n kube-system describe secret kubernetes-dashboard-token | awk '"'"'$1=="token:"{print $2}'"'"' | pbcopy'
 alias kpfm='kubectl port-forward $(kubectl get pods -n ingress-nginx -o name -l app=monitoring-ingress-nginx | head -n 1) 8443:443 -n ingress-nginx'
+
+# exa
+# http://zsh.sourceforge.net/Doc/Release/Expansion.html#Parameter-Expansion
+(( $+commands[exa] )) && {
+    alias l='exa'
+    alias la='exa -la'
+    alias ll='exa -lag'
+    alias lg='exa -bghHliS --git'
+}
+
+# Homebrew
+alias brews='brew list -1'
+alias bubo='brew update && brew outdated'
+alias bubc='brew upgrade && brew cleanup'
+alias bubu='bubo && bubc'
+
+# Antibody
+alias antiup='antibody bundle <~/.zsh_plugins.txt > ~/.zsh_plugins.sh'

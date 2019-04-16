@@ -1,6 +1,3 @@
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
-
 # debug startup time
 # zmodload zsh/zprof
 
@@ -14,21 +11,56 @@ export EDITOR=code
 # avoid german outputs :)
 export LANG="en_US.UTF-8"
 
-# Set name of the theme to load. Optionally, if you set this to "random"
-# it'll load a random theme each time that oh-my-zsh is loaded.
-# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+# See https://github.com/dhohengassner/zsh-theme-racotecnic
 ZSH_THEME="racotecnic"
 
-# Uncomment the following line to enable command auto-correction.
-ENABLE_CORRECTION="true"
+# lazy load any custom functions
+lazyload_fpath=$HOME/.zsh/autoload
+fpath=($lazyload_fpath $fpath)
+if [[ -d "$lazyload_fpath" ]]; then
+    for func in $lazyload_fpath/*; do
+        autoload -Uz ${func:t}
+    done
+fi
+unset lazyload_fpath
 
-# Uncomment the following line to display red dots whilst waiting for completion.
-COMPLETION_WAITING_DOTS="true"
+# completion
+autoload -Uz compinit
+typeset -i updated_at=$(date +'%j' -r ~/.zcompdump 2>/dev/null || stat -f '%Sm' -t '%j' ~/.zcompdump 2>/dev/null)
+if [ $(date +'%j') != $updated_at ]; then
+    compinit -i
+else
+    compinit -C -i
+fi
 
-# install plugins
-# https://github.com/getantibody/antibody
-source <(antibody init)
-antibody bundle < ~/.zsh_plugins.txt
+# stolen autocomplete tweaks from https://github.com/webframp/dotfiles/blob/master/home/.zshrc
+unsetopt menu_complete
+
+# completion performance improvements
+# Force prefix matching, avoid partial globbing on path
+zstyle ':completion:*' accept-exact '*(N)'
+# enable completion cache
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path ~/.local/share/zsh/cache
+
+# Ignore completion for non-existent commands
+zstyle ':completion:*:functions' ignored-patterns '(_*|pre(cmd|exec))'
+#zstyle ':completion:*:functions' ignored-patterns '_*'
+
+
+# completion behavior adjustments
+# Case insensitive, partial-word and substring competion
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
+# zstyle ':completion:*:*:*:*:*' menu select
+# zstyle ':completion:*' special-dirs true
+
+# # Colors in the completion list
+# zstyle ':completion:*' list-colors ''
+# zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-]#)*=01;34=0=01'
+
+# from: vault -autocomplete-install
+# autoload -U +X bashcompinit && bashcompinit
+# complete -o nospace -C /usr/local/bin/vault vault
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
@@ -110,16 +142,12 @@ export PATH="$PATH:$GOPATH/bin"
 # Groovy
 export GROOVY_HOME=/usr/local/opt/groovy/libexec
 
-if command -v pyenv 1>/dev/null 2>&1; then
-	eval "$(pyenv init -)"
-	eval "$(pyenv virtualenv-init -)"
-fi
-
+# Python
+# if command -v pyenv 1>/dev/null 2>&1; then
+# 	eval "$(pyenv init -)"
+# 	eval "$(pyenv virtualenv-init -)"
+# fi
 # pyenv activate python3env 1>/dev/null 2>&1
-
-# completion
-autoload -U +X bashcompinit && bashcompinit
-complete -o nospace -C /Applications/vault vault
 
 # direnv
 eval "$(direnv hook zsh)"
@@ -128,6 +156,12 @@ eval "$(direnv hook zsh)"
 for ZFILE in $HOME/.zsh/*; do
 	source $ZFILE
 done
+
+export ZSH_AUTOSUGGEST_USE_ASYNC=1
+## Source plugins last
+# static method, after updates run:
+# antibody bundle <~/.zsh_plugins.txt > ~/.zsh_plugins.sh
+source ~/.zsh_plugins.sh
 
 # enable docker
 dmstatus=$(docker-machine status dh-docker-toolbox)

@@ -1,0 +1,9 @@
+robbyrussell/oh-my-zsh path:plugins/autojump
+robbyrussell/oh-my-zsh path:plugins/aws
+
+# https://github.com/popstas/zsh-command-time
+popstas/zsh-command-time
+
+# git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+zsh-users/zsh-autosuggestions
+zsh-users/zsh-syntax-highlighting
