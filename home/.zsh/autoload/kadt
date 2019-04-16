@@ -1,0 +1,65 @@
+# -*- mode: sh -*-
+# connect to cluster using iam auth
+
+bethel_values=$(<~/bethel_values.json)
+dh_values=$(<~/dh_values.json)
+
+clusters=(cdh-union cdh-deliver)
+roles=(master deployer developer)
+
+PS3='Select a cluster you wanna connect to: '
+select cluster in "${clusters[@]}"; do
+  case "$cluster" in
+  cdh-union)
+    echo "you have choosen union"
+    PS3='Select a role you wanna use: '
+      select role in "${roles[@]}"; do
+        case "$role" in
+        master)
+          echo "master role selected"
+          break
+          ;;
+        deployer)
+          echo "deployer role selected"
+          break
+          ;;
+        developer)
+          echo "developer role selected"
+          break
+          ;;
+        *)
+          printf "Invalid selection. Please try again.\n"
+          ;;
+        esac
+      done
+    break
+    ;;
+  cdh-deliver)
+    echo "you have choosen deliver"
+    PS3='Select a role you wanna use: '
+    select role in "${roles[@]}"; do
+        case "$role" in
+        master)
+          echo "master role selected"
+          break
+          ;;
+        deployer)
+          echo "deployer role selected"
+          break
+          ;;
+        developer)
+          echo "developer role selected"
+          break
+          ;;
+        *)
+          printf "Invalid selection. Please try again.\n"
+          ;;
+        esac
+      done
+    break
+    ;;
+  *)
+    printf "Invalid selection. Please try again.\n"
+    ;;
+  esac
+done

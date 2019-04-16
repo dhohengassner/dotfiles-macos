@@ -1,0 +1,4 @@
+# -*- mode: sh -*-
+# sh into docker container name
+
+docker exec -it $(docker ps -aqf "name=$1") /bin/sh;

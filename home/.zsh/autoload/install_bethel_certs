@@ -1,0 +1,9 @@
+# -*- mode: sh -*-
+# install bethel certs on workstation
+
+bethel_values=$(<~/bethel_values.json)
+dh_values=$(<~/dh_values.json)
+
+wget -q $(echo $bethel_values | jq -r '.bethel.cert_url') -O ~/install_certs.sh
+chmod +x ~/install_certs.sh
+~/install_certs.sh
