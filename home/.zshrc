@@ -2,13 +2,10 @@
 # zmodload zsh/zprof
 
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/dh/.oh-my-zsh
+export ZSH=/Users/dh/oh-my-zsh
 
 # set code as editor
 export EDITOR=code
-
-# avoid german outputs :)
-export LANG="en_US.UTF-8"
 
 # See https://github.com/dhohengassner/zsh-theme-racotecnic
 ZSH_THEME="racotecnic"
@@ -61,23 +58,14 @@ zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
 # autoload -U +X bashcompinit && bashcompinit
 # complete -o nospace -C /usr/local/bin/vault vault
 
-# alias tips
-source ~/.oh-my-zsh/plugins/alias-tips/alias-tips.plugin.zsh
-
 # command-time
 export ZSH_COMMAND_TIME_MIN_SECONDS=1
 export ZSH_COMMAND_TIME_COLOR="yellow"
-
-# homeshick integration
-source "$HOME/.homesick/repos/homeshick/homeshick.sh"
-fpath=($HOME/.homesick/repos/homeshick/completions $fpath)
 
 source $ZSH/oh-my-zsh.sh
 
 # iterm2 shell integration
 source ~/.iterm2_shell_integration.zsh
-
-# User configuration
 
 # custom key bindings
 bindkey "[D" backward-word
