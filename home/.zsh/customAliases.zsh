@@ -93,10 +93,6 @@ alias cdhvault="code ~/.zsh/vault.zsh"
 alias dtssh='docker-machine ssh dh-docker-toolbox'
 #alias dtssh="ssh -i ~/.docker/machine/machines/dh-docker-toolbox/id_rsa -p 49775 docker@localhost"
 
-# some other stuff
-alias re='/bin/zsh --login'
-alias h='history'
-
 # k8s
 alias kcdt='kubectl -n kube-system describe secret kubernetes-dashboard-token | awk '"'"'$1=="token:"{print $2}'"'"' | pbcopy'
 alias kpfm='kubectl port-forward $(kubectl get pods -n ingress-nginx -o name -l app=monitoring-ingress-nginx | head -n 1) 8443:443 -n ingress-nginx'
@@ -117,4 +113,11 @@ alias bubc='brew upgrade && brew cleanup'
 alias bubu='bubo && bubc'
 
 # Antibody
-alias antiup='antibody bundle <~/.zsh_plugins.txt > ~/.zsh_plugins.sh'
+alias antiup='antibody bundle < ~/.zsh_plugins.txt > ~/.zsh_plugins.sh'
+
+# Ruby
+alias be='bundle exec'
+
+# some other stuff
+alias re='/bin/zsh --login'
+alias h='history'

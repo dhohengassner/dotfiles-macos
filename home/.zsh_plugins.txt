@@ -1,9 +1,11 @@
-robbyrussell/oh-my-zsh path:plugins/autojump
+# oh my zsh plugins
 robbyrussell/oh-my-zsh path:plugins/aws
+robbyrussell/oh-my-zsh path:plugins/kubectl
+robbyrussell/oh-my-zsh path:plugins/docker
 
-# https://github.com/popstas/zsh-command-time
 popstas/zsh-command-time
 
-# git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 zsh-users/zsh-autosuggestions
 zsh-users/zsh-syntax-highlighting
+
+rupa/z
