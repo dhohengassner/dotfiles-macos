@@ -2,7 +2,6 @@
 # zmodload zsh/zprof
 
 # Path to your oh-my-zsh installation.
-
 export ZSH=/Users/dh/.oh-my-zsh
 
 # set code as editor
@@ -62,27 +61,6 @@ zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
 # autoload -U +X bashcompinit && bashcompinit
 # complete -o nospace -C /usr/local/bin/vault vault
 
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-# plugins=(
-# 	autojump
-# 	aws
-# 	bundler
-# 	# https://github.com/popstas/zsh-command-time
-# 	command-time
-# 	docker
-# 	helm
-# 	kubectl
-# 	osx
-# 	rbenv
-# 	ruby
-# 	tmux
-# 	# git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-# 	zsh-autosuggestions
-# )
-
 # alias tips
 source ~/.oh-my-zsh/plugins/alias-tips/alias-tips.plugin.zsh
 
@@ -108,36 +86,20 @@ bindkey "[C" forward-word
 # ssh
 export SSH_KEY_PATH="~/.ssh/rsa_id"
 
-# chef integration
-export PATH="/opt/chefdk/embedded/bin:$PATH"
-
 # gitlab token for scripting and querying appsgit
 export GITLAB_TOKEN="$(echo $(<~/dh_values.json) | jq -r '.gitlab.scriptToken')"
-
-# vault integration
-export PATH=$PATH:/Applications
 
 # K8s variables
 export KUBECONFIG=~/.kube/dh-test
 
 # ruby
-eval "$(rbenv init -)"
-export RBENV_ROOT="$HOME/.rbenv"
+# eval "$(rbenv init -)"
+# export RBENV_ROOT="$HOME/.rbenv"
 
 # python
 # export PYENV_ROOT="$HOME/.pyenv"
 # export PATH="$PYENV_ROOT/bin:$PATH"
 # export PYENV_VIRTUALENV_DISABLE_PROMPT=1
-
-# GO
-### test with multiple GOPATHs
-# export GOPATH=/Users/dh/go:/Users/dh/src/gopath
-# export GOROOT=/usr/local/opt/go/libexec
-# export PATH="$PATH:$GOPATH/bin"
-# export PATH="$PATH:$GOROOT/bin"
-
-export GOPATH=/Users/dh/go
-export PATH="$PATH:$GOPATH/bin"
 
 # Groovy
 export GROOVY_HOME=/usr/local/opt/groovy/libexec
