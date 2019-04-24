@@ -19,17 +19,21 @@ alias gob='go build'
 alias gog='GIT_TERMINAL_PROMPT=1 go get'
 alias goga='GIT_TERMINAL_PROMPT=1 go get -d -t .'
 alias gogr='GIT_TERMINAL_PROMPT=1 go get -d -v -t ./...'
+alias gogm='GIT_TERMINAL_PROMPT=1 go get -d -v ./...'
 alias cdg="cd $GOPATH/src"
 alias gt='go test'
 alias gtr='go test -v ./...'
+alias gomv='go mod verify'
+alias gomt='go mod tidy'
+
 
 # own kitchen aliases
-alias kc='kitchen converge'
-alias kd='kitchen destroy'
-alias kcr='kitchen create'
-alias kl='kitchen list'
-alias kssh='kitchen login'
-alias kv='kitchen verify'
+alias kic='kitchen converge'
+alias kid='kitchen destroy'
+alias kicr='kitchen create'
+alias kil='kitchen list'
+alias kissh='kitchen login'
+alias kiv='kitchen verify'
 
 # other often used aliases
 alias dlv='delivery local verify'
