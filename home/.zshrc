@@ -20,6 +20,16 @@ if [[ -d "$lazyload_fpath" ]]; then
 fi
 unset lazyload_fpath
 
+## plugin environment vars
+
+# command-time
+export ZSH_COMMAND_TIME_MIN_SECONDS=1
+export ZSH_COMMAND_TIME_COLOR="yellow"
+
+# autosuggest
+export ZSH_AUTOSUGGEST_USE_ASYNC=1
+export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
+
 # completion
 autoload -Uz compinit
 typeset -i updated_at=$(date +'%j' -r ~/.zcompdump 2>/dev/null || stat -f '%Sm' -t '%j' ~/.zcompdump 2>/dev/null)
@@ -58,18 +68,14 @@ zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
 # autoload -U +X bashcompinit && bashcompinit
 # complete -o nospace -C /usr/local/bin/vault vault
 
-# command-time
-export ZSH_COMMAND_TIME_MIN_SECONDS=1
-export ZSH_COMMAND_TIME_COLOR="yellow"
-
 source $ZSH/oh-my-zsh.sh
 
 # iterm2 shell integration
 source ~/.iterm2_shell_integration.zsh
 
 # custom key bindings
-bindkey "[D" backward-word
-bindkey "[C" forward-word
+bindkey '^[[1;5D' backward-word
+bindkey '^[[1;5C' forward-word
 
 # ssh
 export SSH_KEY_PATH="~/.ssh/rsa_id"
@@ -107,7 +113,6 @@ for ZFILE in $HOME/.zsh/*; do
 	source $ZFILE
 done
 
-export ZSH_AUTOSUGGEST_USE_ASYNC=1
 ## Source plugins last
 # static method, after updates run:
 # antibody bundle <~/.zsh_plugins.txt > ~/.zsh_plugins.sh
