@@ -74,8 +74,8 @@ source $ZSH/oh-my-zsh.sh
 source ~/.iterm2_shell_integration.zsh
 
 # custom key bindings
-bindkey '^[[1;5D' backward-word
-bindkey '^[[1;5C' forward-word
+bindkey '^[[1;3C' forward-word
+bindkey '^[[1;3D' backward-word
 
 # ssh
 export SSH_KEY_PATH="~/.ssh/rsa_id"

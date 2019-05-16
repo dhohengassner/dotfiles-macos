@@ -27,5 +27,25 @@
     {
         "key": "alt+cmd+[BracketLeft]",
         "command": "git.unstageSelectedRanges"
+    },
+    {
+        "key": "alt+left",
+        "command": "cursorWordStartLeft",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "alt+right",
+        "command": "cursorWordEndRight",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "alt+shift+left",
+        "command": "cursorWordStartLeftSelect",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "alt+shift+right",
+        "command": "cursorWordEndRightSelect",
+        "when": "editorTextFocus"
     }
 ]
