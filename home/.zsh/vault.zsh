@@ -35,7 +35,7 @@ function vt() {
 		fi
 	}
 
-	awsaccounts=(lab1 hyperloop)
+	awsaccounts=(lab1 lab2 hyperloop)
 	bethel_values=$(<~/bethel_values.json)
 
 	PS3='Select an account: '
@@ -43,6 +43,10 @@ function vt() {
 		case "$opt" in
 		lab1)
 			vaulty_authy "$(echo $bethel_values | jq -r '.vault.environment_creds.lab1')" "$1" $bethel_values
+			break
+			;;
+		lab2)
+			vaulty_authy "$(echo $bethel_values | jq -r '.vault.environment_creds.lab2')" "$1" $bethel_values
 			break
 			;;
 		hyperloop)
