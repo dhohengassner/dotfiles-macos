@@ -6,6 +6,7 @@ export ZSH=/Users/dh/oh-my-zsh
 
 # set code as editor
 export EDITOR=code
+export KUBE_EDITOR='code --wait'
 
 # See https://github.com/dhohengassner/zsh-theme-racotecnic
 ZSH_THEME="racotecnic"
