@@ -3,6 +3,7 @@
 VM=dh-docker-toolbox
 DOCKER_MACHINE=/usr/local/bin/docker-machine
 VBOXMANAGE=/Applications/VirtualBox.app/Contents/MacOS/VBoxManage
+BOOT2DOCKER_VERSION=18.09.8
 
 BLUE='\033[0;34m'
 GREEN='\033[0;32m'
@@ -49,7 +50,7 @@ if [ $VM_EXISTS_CODE -eq 1 ]; then
   if [ "${NO_PROXY}" ]; then
     PROXY_ENV="$PROXY_ENV --engine-env NO_PROXY=$NO_PROXY"
   fi
-  "${DOCKER_MACHINE}" create -d virtualbox $PROXY_ENV --virtualbox-memory 10240 --virtualbox-cpu-count "2" --virtualbox-disk-size 204800 "${VM}"
+  "${DOCKER_MACHINE}" create -d virtualbox $PROXY_ENV --virtualbox-boot2docker-url "https://github.com/boot2docker/boot2docker/releases/download/v${BOOT2DOCKER_VERSION}/boot2docker.iso" --virtualbox-memory 10240 --virtualbox-cpu-count "2" --virtualbox-disk-size 204800 "${VM}"
 fi
 
 VM_STATUS="$( set +e ; ${DOCKER_MACHINE} status ${VM} )"
