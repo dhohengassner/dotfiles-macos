@@ -82,13 +82,11 @@ alias sshd='ssh-add -D'
 
 # config aliases
 alias zshconfig="vim ~/.zshrc"
-alias ohmyzsh="vim ~/.oh-my-zsh"
 alias dhgitconfig="vim ~/.zsh/git.zsh"
 alias dhcustom="vim ~/.zsh/customFunctions.zsh"
 alias dhvault="vim ~/.zsh/vault.zsh"
 
 alias czshconfig="code ~/.zshrc"
-alias cohmyzsh="code ~/.oh-my-zsh"
 alias cdhgitconfig="code ~/.zsh/git.zsh"
 alias cdhcustom="code ~/.zsh/customFunctions.zsh"
 alias cdhvault="code ~/.zsh/vault.zsh"
@@ -99,7 +97,7 @@ alias dtssh='docker-machine ssh dh-docker-toolbox'
 
 # k8s
 alias kcdt='kubectl -n kube-system describe secret kubernetes-dashboard-token | awk '"'"'$1=="token:"{print $2}'"'"' | pbcopy'
-alias kpfm='kubectl port-forward $(kubectl get pods -n ingress-nginx -o name -l app=monitoring-ingress-nginx | head -n 1) 8443:443 -n ingress-nginx'
+alias kpfm='kubectl port-forward $(kubectl get pods -n ingress-nginx -o name -l app=auth-ingress-nginx | head -n 1) 8443:443 -n ingress-nginx'
 
 # exa
 # http://zsh.sourceforge.net/Doc/Release/Expansion.html#Parameter-Expansion
