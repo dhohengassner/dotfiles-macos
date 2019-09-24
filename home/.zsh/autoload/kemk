@@ -1,0 +1,8 @@
+# -*- mode: sh -*-
+# get kops config from dh test cluster
+
+bethel_values=$(<~/bethel_values.json)
+dh_values=$(<~/dh_values.json)
+
+export KOPS_STATE_STORE=$(echo $bethel_values | jq -r '.kubernetes.kops.testcluster.default_state_store')
+kops export kubecfg $(echo $bethel_values | jq -r '.kubernetes.kops.testcluster.cluster_name')
