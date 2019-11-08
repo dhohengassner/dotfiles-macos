@@ -17,4 +17,5 @@ export LESSCHARSET=utf-8
 
 # set important paths
 export GOPATH=$HOME/go
+export GOPRIVATE=appsgit.bethel.jw.org
 export PATH="$GOPATH/bin:/usr/local/bin:/opt/chefdk/embedded/bin:/usr/bin:/usr/sbin:/bin:/sbin:/Applications"
