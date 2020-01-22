@@ -119,6 +119,12 @@ done
 # antibody bundle <~/.zsh_plugins.txt > ~/.zsh_plugins.sh
 source ~/.zsh_plugins.sh
 
+# https://bash-my-aws.org/
+source ~/.bash-my-aws/aliases
+autoload -U +X compinit && compinit
+autoload -U +X bashcompinit && bashcompinit
+source ~/.bash-my-aws/bash_completion.sh
+
 # enable docker
 dmstatus=$(docker-machine status dh-docker-toolbox)
 if [ "$dmstatus" != "Running" ]; then sdocker; else edocker; fi
