@@ -35,7 +35,7 @@ function vt() {
 		fi
 	}
 
-	awsaccounts=(lab1 lab2 hyperloop prd prd_read appsjw brdcst prd_leg)
+	awsaccounts=(lab1 lab2 hyperloop prd prd_read appsjw brdcst prd_leg travel_prd)
 	bethel_values=$(<~/bethel_values.json)
 
 	PS3='Select an account: '
@@ -71,6 +71,10 @@ function vt() {
 			;;
 		prd_leg)
 		  vaulty_authy "$(echo $bethel_values | jq -r '.vault.environment_creds.prd_leg')" "$1" $bethel_values
+			break
+			;;
+		travel_prd)
+		  vaulty_authy "$(echo $bethel_values | jq -r '.vault.environment_creds.travel_prd')" "$1" $bethel_values
 			break
 			;;
 		*)
